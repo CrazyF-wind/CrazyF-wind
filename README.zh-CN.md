@@ -43,12 +43,12 @@
 ## 📊 GitHub 统计
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=CrazyF-wind&show_icons=true&hide_border=true&rank_icon=github&theme=transparent" alt="GitHub Stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CrazyF-wind&layout=compact&hide_border=true&theme=transparent" alt="Top Languages" />
+  <img width="700" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=CrazyF-wind&theme=transparent" alt="GitHub Profile Details" />
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=CrazyF-wind&hide_border=true&theme=transparent" alt="GitHub Streak" />
+  <img width="420" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=CrazyF-wind&theme=transparent" alt="Repos Per Language" />
+  <img width="420" src="https://streak-stats.demolab.com?user=CrazyF-wind&hide_border=true&theme=transparent" alt="GitHub Streak" />
 </p>
 
 ## 🚀 项目
