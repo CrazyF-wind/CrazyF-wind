@@ -30,12 +30,10 @@
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
 </p>
 <p>
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
   <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
   <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" />
 </p>
 
 ## 📊 GitHub 统计
@@ -53,9 +51,9 @@
 
 | 项目 | 简介 | 技术 |
 | --- | --- | --- |
-| [openapi](https://github.com/CrazyF-wind/openapi) | OpenAPI 相关实践 | TypeScript |
-| [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | 个人博客 | HTML |
-| [Tutorial](https://github.com/CrazyF-wind/Tutorial) | The first program. | — |
+| [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | 让 Agent 「先看证据，再给建议」的天气建议 Skill —— 文档 + JSON Schema + 32 条验收用例 | Markdown / JSON Schema |
+| [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | 格物：从技术文章中提取可验证的解释模型（VEM），渲染并校验准确的 SVG 原理图 | Python / SVG |
+| [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | 研究侦察员：可断点续跑、可追溯的迭代式行业研究采集与知识沉淀 | Python |
 
 ## 📫 找到我
 
