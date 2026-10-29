@@ -1,3 +1,7 @@
+<p align="center">
+  <b>English</b> | <a href="README.zh-CN.md">简体中文</a>
+</p>
+
 <h1 align="center">Hi 👋, I'm HashTable</h1>
 
 <p align="center">
@@ -12,14 +16,14 @@
 
 ---
 
-## 🧑‍💻 关于我
+## 🧑‍💻 About Me
 
-- 🌱 正在折腾 **AI Agent**
-- 💻 相信「**技术、创新可以改变世界.**」
-- 📝 偶尔写点东西，都在我的 [博客](https://crazyf-wind.github.io/) 里
-- ⚡ 空闲时间喜欢读源码、造轮子、把简单的事情做复杂再简化回来
+- 🌱 Currently exploring **AI Agents**
+- 💻 I believe that **technology and innovation can change the world.**
+- 📝 I write now and then — everything lives on my [blog](https://crazyf-wind.github.io/)
+- ⚡ In my spare time I read source code, build tools, and make simple things complicated only to boil them back down to simple
 
-## 🛠 技术栈
+## 🛠 Tech Stack
 
 <p>
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
@@ -36,7 +40,7 @@
   <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
 </p>
 
-## 📊 GitHub 统计
+## 📊 GitHub Stats
 
 <p align="center">
   <img height="165" src="https://github-readme-stats.vercel.app/api?username=CrazyF-wind&show_icons=true&hide_border=true&rank_icon=github&theme=transparent" alt="GitHub Stats" />
@@ -47,15 +51,15 @@
   <img src="https://streak-stats.demolab.com?user=CrazyF-wind&hide_border=true&theme=transparent" alt="GitHub Streak" />
 </p>
 
-## 🚀 项目
+## 🚀 Projects
 
-| 项目 | 简介 | 技术 |
+| Project | Description | Tech |
 | --- | --- | --- |
-| [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | 让 Agent 「先看证据，再给建议」的天气建议 Skill —— 文档 + JSON Schema + 32 条验收用例 | Markdown / JSON Schema |
-| [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | 格物：从技术文章中提取可验证的解释模型（VEM），渲染并校验准确的 SVG 原理图 | Python / SVG |
-| [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | 研究侦察员：可断点续跑、可追溯的迭代式行业研究采集与知识沉淀 | Python |
+| [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | A weather-advice Skill that makes agents look at the evidence first, then recommend — docs + JSON Schema + 32 acceptance cases | Markdown / JSON Schema |
+| [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | Extract verifiable explanation models (VEM) from technical articles, then render and validate accurate SVG diagrams | Python / SVG |
+| [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | A resumable, traceable iterative research-collection and knowledge-distillation Skill | Python |
 
-## 📫 找到我
+## 📫 Find Me
 
 <p>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
@@ -65,3 +69,5 @@
 ---
 
 <p align="center"><i>Eat, Sleep, Code, Repeat.</i></p>
+
+<!-- Keep this file in sync with README.zh-CN.md -->
