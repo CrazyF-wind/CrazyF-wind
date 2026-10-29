@@ -14,10 +14,9 @@
 
 ## 🧑‍💻 关于我
 
-- 🌱 正在折腾 **TypeScript / Node.js / OpenAPI**
-- 💻 相信「**Eat, Sleep, Code, Repeat.**」
+- 🌱 正在折腾 **AI Agent**
+- 💻 相信「**技术、创新可以改变世界.**」
 - 📝 偶尔写点东西，都在我的 [博客](https://crazyf-wind.github.io/) 里
-- 📍 现居北京
 - ⚡ 空闲时间喜欢读源码、造轮子、把简单的事情做复杂再简化回来
 
 ## 🛠 技术栈
@@ -27,7 +26,7 @@
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
-  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
 </p>
 <p>
