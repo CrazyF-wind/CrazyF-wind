@@ -44,7 +44,7 @@
 ## 📊 GitHub Stats
 
 <p align="center">
-  <img width="700" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=CrazyF-wind&theme=transparent" alt="GitHub Profile Details" />
+  <img width="700" src="assets/profile-card.svg" alt="Profile summary across CrazyF-wind, tavorit-dev and Open-Multiverse" />
 </p>
 
 <p align="center">

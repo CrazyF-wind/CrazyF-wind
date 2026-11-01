@@ -44,7 +44,7 @@
 ## 📊 GitHub 统计
 
 <p align="center">
-  <img width="700" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=CrazyF-wind&theme=transparent" alt="GitHub Profile Details" />
+  <img width="700" src="assets/profile-card.svg" alt="CrazyF-wind、tavorit-dev 与 Open-Multiverse 的资料统计" />
 </p>
 
 <p align="center">
