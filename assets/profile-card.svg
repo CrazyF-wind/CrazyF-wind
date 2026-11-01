@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="270" viewBox="0 0 700 270" role="img" aria-label="HashTable (CrazyF-wind) profile summary">
+  <defs>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2F81F7" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#2F81F7" stop-opacity="0.03" />
+    </linearGradient>
+  </defs>
   <style>
     .title { fill: #1f2328; font: 600 22px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
     .subtitle, .row, .axis { fill: #57606a; font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
@@ -7,7 +13,7 @@
     .caption { fill: #57606a; font: 10px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
     .icon { fill: none; stroke: #57606a; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
     .grid { stroke: #d0d7de; stroke-width: 1; stroke-dasharray: 3 3; }
-    .bar { fill: #2F81F7; }
+    .trend { fill: none; stroke: #2F81F7; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
     @media (prefers-color-scheme: dark) {
       .title { fill: #e6edf3; }
       .subtitle, .row, .axis, .caption { fill: #8b949e; }
@@ -18,22 +24,22 @@
   <text class="title" x="24" y="46">HashTable (CrazyF-wind)</text>
   <text class="subtitle" x="24" y="66">CrazyF-wind · tavorit-dev · Open-Multiverse</text>
   <g class="icon" transform="translate(24 100)"><circle cx="8" cy="8" r="3.5" /><path d="M0 8h4.5M11.5 8H16" /></g>
-  <text class="row" x="50" y="112">189 commits in 2026</text>
+  <text class="row" x="50" y="112">191 commits in 2026</text>
   <g class="icon" transform="translate(24 140)"><rect x="1.5" y="2" width="13" height="12" rx="2" /><path d="M5 2v12" /></g>
   <text class="row" x="50" y="152">9 public repos</text>
   <g class="icon" transform="translate(24 180)"><circle cx="8" cy="8" r="6.5" /><path d="M8 4.5V8l2.5 1.5" /></g>
   <text class="row" x="50" y="192">Joined GitHub 12 years ago</text>
-  <text class="caption" x="676" y="84" text-anchor="end">commits per year</text>
+  <text class="caption" x="676" y="84" text-anchor="end">monthly commits</text>
   <line class="grid" x1="300" y1="220.0" x2="676" y2="220.0" />
   <line class="grid" x1="300" y1="162.0" x2="676" y2="162.0" />
   <line class="grid" x1="300" y1="104.0" x2="676" y2="104.0" />
-  <rect class="bar" x="542.5" y="218.8" width="41.4" height="1.2" rx="2" />
-  <rect class="bar" x="617.7" y="104.0" width="41.4" height="116.0" rx="2" />
-  <text class="axis" x="292" y="108" text-anchor="end">189</text>
+  <path d="M300.0 220.0 L306.5 220.0 L313.0 220.0 L319.4 220.0 L325.9 220.0 L332.4 220.0 L338.9 220.0 L345.4 220.0 L351.9 220.0 L358.3 220.0 L364.8 220.0 L371.3 220.0 L377.8 220.0 L384.3 220.0 L390.8 220.0 L397.2 220.0 L403.7 220.0 L410.2 220.0 L416.7 220.0 L423.2 220.0 L429.7 220.0 L436.1 220.0 L442.6 220.0 L449.1 220.0 L455.6 220.0 L462.1 220.0 L468.6 220.0 L475.0 220.0 L481.5 220.0 L488.0 220.0 L494.5 220.0 L501.0 220.0 L507.4 220.0 L513.9 220.0 L520.4 220.0 L526.9 220.0 L533.4 220.0 L539.9 217.5 L546.3 220.0 L552.8 220.0 L559.3 220.0 L565.8 220.0 L572.3 220.0 L578.8 220.0 L585.2 220.0 L591.7 220.0 L598.2 220.0 L604.7 220.0 L611.2 220.0 L617.7 220.0 L624.1 104.0 L630.6 220.0 L637.1 220.0 L643.6 220.0 L650.1 220.0 L656.6 220.0 L663.0 220.0 L669.5 116.3 L676.0 204.0 L676 220 L300 220 Z" fill="url(#area)" />
+  <path class="trend" d="M300.0 220.0 L306.5 220.0 L313.0 220.0 L319.4 220.0 L325.9 220.0 L332.4 220.0 L338.9 220.0 L345.4 220.0 L351.9 220.0 L358.3 220.0 L364.8 220.0 L371.3 220.0 L377.8 220.0 L384.3 220.0 L390.8 220.0 L397.2 220.0 L403.7 220.0 L410.2 220.0 L416.7 220.0 L423.2 220.0 L429.7 220.0 L436.1 220.0 L442.6 220.0 L449.1 220.0 L455.6 220.0 L462.1 220.0 L468.6 220.0 L475.0 220.0 L481.5 220.0 L488.0 220.0 L494.5 220.0 L501.0 220.0 L507.4 220.0 L513.9 220.0 L520.4 220.0 L526.9 220.0 L533.4 220.0 L539.9 217.5 L546.3 220.0 L552.8 220.0 L559.3 220.0 L565.8 220.0 L572.3 220.0 L578.8 220.0 L585.2 220.0 L591.7 220.0 L598.2 220.0 L604.7 220.0 L611.2 220.0 L617.7 220.0 L624.1 104.0 L630.6 220.0 L637.1 220.0 L643.6 220.0 L650.1 220.0 L656.6 220.0 L663.0 220.0 L669.5 116.3 L676.0 204.0" />
+  <text class="axis" x="292" y="108" text-anchor="end">94</text>
   <text class="axis" x="292" y="224" text-anchor="end">0</text>
-  <text class="axis" x="337.6" y="238" text-anchor="middle">2022</text>
-  <text class="axis" x="412.8" y="238" text-anchor="middle">2023</text>
-  <text class="axis" x="488.0" y="238" text-anchor="middle">2024</text>
-  <text class="axis" x="563.2" y="238" text-anchor="middle">2025</text>
-  <text class="axis" x="638.4" y="238" text-anchor="middle">2026</text>
+  <text class="axis" x="300.0" y="238" text-anchor="middle">2022</text>
+  <text class="axis" x="377.8" y="238" text-anchor="middle">2023</text>
+  <text class="axis" x="455.6" y="238" text-anchor="middle">2024</text>
+  <text class="axis" x="533.4" y="238" text-anchor="middle">2025</text>
+  <text class="axis" x="611.2" y="238" text-anchor="middle">2026</text>
 </svg>
