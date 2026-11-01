@@ -48,7 +48,11 @@
 </p>
 
 <p align="center">
+  <img width="495" src="assets/contributions.svg" alt="CrazyF-wind、tavorit-dev 与 Open-Multiverse 的贡献统计" />
   <img width="495" src="assets/top-languages.svg" alt="Top Languages" />
+</p>
+
+<p align="center">
   <img width="420" src="https://streak-stats.demolab.com?user=CrazyF-wind&hide_border=true&theme=transparent" alt="GitHub Streak" />
 </p>
 
