@@ -31,6 +31,7 @@
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
   <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" />
+  <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
 </p>
 <p>
@@ -58,12 +59,16 @@
 | [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | 让 Agent 「先看证据，再给建议」的天气建议 Skill —— 文档 + JSON Schema + 32 条验收用例 | Markdown / JSON Schema |
 | [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | 格物：从技术文章中提取可验证的解释模型（VEM），渲染并校验准确的 SVG 原理图 | Python / SVG |
 | [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | 研究侦察员：可断点续跑、可追溯的迭代式行业研究采集与知识沉淀 | Python |
+| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | 博客文章的「可运行版本」—— 后端、前端、DevOps 各领域的自包含示例 | Go / Node.js |
+| [NovaEngine](https://github.com/Open-Multiverse/NovaEngine) | 用 Rust + WebAssembly 构建的 Web 3D 游戏引擎 —— WebGPU 渲染、Rapier3D 物理、egui 界面 | Rust / WebAssembly |
+| [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | 个人技术博客源码，通过 GitHub Pages 发布的静态站点 | HTML / CSS / JS |
 
 ## 📫 找到我
 
 <p>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
   <a href="https://github.com/CrazyF-wind"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://github.com/Open-Multiverse"><img src="https://img.shields.io/badge/Open--Multiverse-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
 </p>
 
 ---

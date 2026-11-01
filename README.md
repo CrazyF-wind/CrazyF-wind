@@ -31,6 +31,7 @@
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
   <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" />
+  <img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
 </p>
 <p>
@@ -58,12 +59,16 @@
 | [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | A weather-advice Skill that makes agents look at the evidence first, then recommend — docs + JSON Schema + 32 acceptance cases | Markdown / JSON Schema |
 | [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | Extract verifiable explanation models (VEM) from technical articles, then render and validate accurate SVG diagrams | Python / SVG |
 | [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | A resumable, traceable iterative research-collection and knowledge-distillation Skill | Python |
+| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | Runnable companion code for my blog — self-contained examples across backend, frontend and DevOps | Go / Node.js |
+| [NovaEngine](https://github.com/Open-Multiverse/NovaEngine) | A Web 3D game engine built with Rust and WebAssembly — WebGPU rendering, Rapier3D physics, egui UI | Rust / WebAssembly |
+| [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | Source of my personal tech blog — a static site published with GitHub Pages | HTML / CSS / JS |
 
 ## 📫 Find Me
 
 <p>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
   <a href="https://github.com/CrazyF-wind"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://github.com/Open-Multiverse"><img src="https://img.shields.io/badge/Open--Multiverse-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
 </p>
 
 ---
