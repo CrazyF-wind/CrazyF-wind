@@ -91,6 +91,7 @@
 <p>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
   <a href="https://github.com/CrazyF-wind"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://github.com/tavorit-dev"><img src="https://img.shields.io/badge/tavorit--dev-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
   <a href="https://github.com/Open-Multiverse"><img src="https://img.shields.io/badge/Open--Multiverse-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
   <a href="https://github.com/open-wuxu"><img src="https://img.shields.io/badge/open--wuxu-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
 </p>
