@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="270" viewBox="0 0 700 270" role="img" aria-label="HashTable (CrazyF-wind) profile summary">
+  <defs>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2F81F7" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#2F81F7" stop-opacity="0.03" />
+    </linearGradient>
+  </defs>
+  <style>
+    .title { fill: #1f2328; font: 600 22px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .subtitle, .row, .axis { fill: #57606a; font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .subtitle { font-size: 11px; }
+    .axis { font-size: 9px; }
+    .caption { fill: #57606a; font: 10px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .icon { fill: none; stroke: #57606a; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .grid { stroke: #d0d7de; stroke-width: 1; stroke-dasharray: 3 3; }
+    .trend { fill: none; stroke: #2F81F7; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+    @media (prefers-color-scheme: dark) {
+      .title { fill: #e6edf3; }
+      .subtitle, .row, .axis, .caption { fill: #8b949e; }
+      .icon { stroke: #8b949e; }
+      .grid { stroke: #30363d; }
+    }
+  </style>
+  <text class="title" x="24" y="46">HashTable (CrazyF-wind)</text>
+  <text class="subtitle" x="24" y="66">CrazyF-wind · tavorit-dev · Open-Multiverse</text>
+  <g class="icon" transform="translate(24 100)"><circle cx="8" cy="8" r="3.5" /><path d="M0 8h4.5M11.5 8H16" /></g>
+  <text class="row" x="50" y="112">187 commits in the last year · all authors</text>
+  <g class="icon" transform="translate(24 140)"><rect x="1.5" y="2" width="13" height="12" rx="2" /><path d="M5 2v12" /></g>
+  <text class="row" x="50" y="152">9 public repos</text>
+  <g class="icon" transform="translate(24 180)"><circle cx="8" cy="8" r="6.5" /><path d="M8 4.5V8l2.5 1.5" /></g>
+  <text class="row" x="50" y="192">Joined GitHub 12 years ago</text>
+  <text class="caption" x="676" y="84" text-anchor="end">commits in the last year</text>
+  <line class="grid" x1="300" y1="220.0" x2="676" y2="220.0" />
+  <line class="grid" x1="300" y1="162.0" x2="676" y2="162.0" />
+  <line class="grid" x1="300" y1="104.0" x2="676" y2="104.0" />
+  <path d="M300.0 220.0 L334.2 220.0 L368.4 220.0 L402.5 104.0 L436.7 220.0 L470.9 220.0 L505.1 220.0 L539.3 220.0 L573.5 220.0 L607.6 220.0 L641.8 116.3 L676.0 208.9 L676 220 L300 220 Z" fill="url(#area)" />
+  <path class="trend" d="M300.0 220.0 L334.2 220.0 L368.4 220.0 L402.5 104.0 L436.7 220.0 L470.9 220.0 L505.1 220.0 L539.3 220.0 L573.5 220.0 L607.6 220.0 L641.8 116.3 L676.0 208.9" />
+  <text class="axis" x="292" y="108" text-anchor="end">94</text>
+  <text class="axis" x="292" y="224" text-anchor="end">0</text>
+  <text class="axis" x="300.0" y="238" text-anchor="middle">25/12</text>
+  <text class="axis" x="368.4" y="238" text-anchor="middle">26/02</text>
+  <text class="axis" x="436.7" y="238" text-anchor="middle">26/04</text>
+  <text class="axis" x="505.1" y="238" text-anchor="middle">26/06</text>
+  <text class="axis" x="573.5" y="238" text-anchor="middle">26/08</text>
+  <text class="axis" x="641.8" y="238" text-anchor="middle">26/10</text>
+  <text class="axis" x="676.0" y="238" text-anchor="middle">26/11</text>
+</svg>

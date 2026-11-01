@@ -26,12 +26,12 @@
   <text class="pct" x="475" y="138" text-anchor="end">13%</text>
   <text class="label" x="20" y="164">JavaScript</text>
   <rect class="track" x="150" y="156" width="260" height="8" rx="4" />
-  <rect x="150" y="156" width="7" height="8" rx="4" fill="#f1e05a" />
-  <text class="pct" x="475" y="164" text-anchor="end">2.7%</text>
+  <rect x="150" y="156" width="8" height="8" rx="4" fill="#f1e05a" />
+  <text class="pct" x="475" y="164" text-anchor="end">3%</text>
   <text class="label" x="20" y="190">CSS</text>
   <rect class="track" x="150" y="182" width="260" height="8" rx="4" />
   <rect x="150" y="182" width="6" height="8" rx="4" fill="#563d7c" />
-  <text class="pct" x="475" y="190" text-anchor="end">2.5%</text>
+  <text class="pct" x="475" y="190" text-anchor="end">2.4%</text>
   <text class="label" x="20" y="216">Go</text>
   <rect class="track" x="150" y="208" width="260" height="8" rx="4" />
   <rect x="150" y="208" width="2" height="8" rx="4" fill="#00ADD8" />
