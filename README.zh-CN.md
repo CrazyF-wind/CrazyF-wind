@@ -44,11 +44,11 @@
 ## 📊 GitHub 统计
 
 <p align="center">
-  <img width="700" src="assets/profile-card.svg" alt="CrazyF-wind、tavorit-dev 与 Open-Multiverse 的资料统计" />
+  <img width="700" src="assets/profile-card.svg" alt="CrazyF-wind、tavorit-dev、Open-Multiverse 与 open-wuxu 的资料统计" />
 </p>
 
 <p align="center">
-  <img width="495" src="assets/contributions.svg" alt="CrazyF-wind、tavorit-dev 与 Open-Multiverse 的贡献统计" />
+  <img width="495" src="assets/contributions.svg" alt="CrazyF-wind、tavorit-dev、Open-Multiverse 与 open-wuxu 的贡献统计" />
   <img width="495" src="assets/top-languages.svg" alt="Top Languages" />
 </p>
 
@@ -65,12 +65,19 @@
 | [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | 观象：先看天气证据，再把它变成今天就能执行的动作 —— 入口 Skill + JSON Schema + 6 组示例 + 32 条验收用例 | Markdown / JSON Schema / Python |
 | [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | 格物：技术知识视觉解释引擎 —— 先发现真正值得画的原理，提取可验证的解释模型（VEM），再渲染并校验准确的 SVG 原理图 | Python / SVG |
 | [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | 万象：把研究主题变成可断点续跑、可追溯的本地知识库 —— 来源发现、合规采集、证据抽取，导出 Markdown / CSV / 静态 HTML | Python / Markdown |
+| [WriterSkill](https://github.com/tavorit-dev/WriterSkill) | 天工：正在设计中的通用写作 Skill —— 理解创作意图，辅助内容规划、结构优化与表达打磨 | Markdown |
 
 ### 🎮 视觉引擎 & 游戏 —— [Open-Multiverse](https://github.com/Open-Multiverse)
 
 | 项目 | 简介 | 技术 |
 | --- | --- | --- |
 | [NovaEngine](https://github.com/Open-Multiverse/NovaEngine) | 用 Rust + WebAssembly 构建的 Web 3D 游戏引擎 —— WebGPU 渲染、Rapier3D 物理、egui 界面 | Rust / WebAssembly |
+
+### 🏭 工业可视化 —— [open-wuxu](https://github.com/open-wuxu)
+
+| 项目 | 简介 | 技术 |
+| --- | --- | --- |
+| [AssetStudio](https://github.com/open-wuxu/AssetStudio) | 物序 WUXU 旗下的开源工业资产可视化与监控平台 —— 资产台账、设备拓扑、实时数据与可视化看板 | Go / React / TypeScript |
 
 ### 🧩 个人项目
 
@@ -85,6 +92,7 @@
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
   <a href="https://github.com/CrazyF-wind"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
   <a href="https://github.com/Open-Multiverse"><img src="https://img.shields.io/badge/Open--Multiverse-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://github.com/open-wuxu"><img src="https://img.shields.io/badge/open--wuxu-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
 </p>
 
 ---

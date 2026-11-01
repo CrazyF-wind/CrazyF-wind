@@ -2,7 +2,7 @@
 
 export const API = 'https://api.github.com';
 
-const DEFAULT_OWNERS = ['CrazyF-wind', 'tavorit-dev', 'Open-Multiverse'];
+const DEFAULT_OWNERS = ['CrazyF-wind', 'tavorit-dev', 'Open-Multiverse', 'open-wuxu'];
 
 export const PRIMARY_OWNER = process.env.PRIMARY_OWNER || 'CrazyF-wind';
 

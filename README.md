@@ -44,11 +44,11 @@
 ## 📊 GitHub Stats
 
 <p align="center">
-  <img width="700" src="assets/profile-card.svg" alt="Profile summary across CrazyF-wind, tavorit-dev and Open-Multiverse" />
+  <img width="700" src="assets/profile-card.svg" alt="Profile summary across CrazyF-wind, tavorit-dev, Open-Multiverse and open-wuxu" />
 </p>
 
 <p align="center">
-  <img width="495" src="assets/contributions.svg" alt="Contributions across CrazyF-wind, tavorit-dev and Open-Multiverse" />
+  <img width="495" src="assets/contributions.svg" alt="Contributions across CrazyF-wind, tavorit-dev, Open-Multiverse and open-wuxu" />
   <img width="495" src="assets/top-languages.svg" alt="Top Languages" />
 </p>
 
@@ -65,12 +65,19 @@
 | [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | Guanxiang (观象) — reads the weather evidence first, then turns it into actions you can take today; entry Skill + JSON Schema + 6 examples + 32 acceptance cases | Markdown / JSON Schema / Python |
 | [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | Gewu (格物) — a technical-knowledge visual explanation engine: finds what is worth visualizing, extracts a verifiable explanation model (VEM), then renders and validates accurate SVG diagrams | Python / SVG |
 | [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | Wanxiang (万象) — turns a research objective into a resumable, traceable local knowledge base: discovery, compliant collection, evidence extraction, Markdown / CSV / static HTML export | Python / Markdown |
+| [WriterSkill](https://github.com/tavorit-dev/WriterSkill) | Tiangong (天工) — a general writing Skill in design: understand the intent, plan the content, then shape structure and expression | Markdown |
 
 ### 🎮 Visual Engine & Games — [Open-Multiverse](https://github.com/Open-Multiverse)
 
 | Project | Description | Tech |
 | --- | --- | --- |
 | [NovaEngine](https://github.com/Open-Multiverse/NovaEngine) | A Web 3D game engine built with Rust and WebAssembly — WebGPU rendering, Rapier3D physics, egui UI | Rust / WebAssembly |
+
+### 🏭 Industrial Visualization — [open-wuxu](https://github.com/open-wuxu)
+
+| Project | Description | Tech |
+| --- | --- | --- |
+| [AssetStudio](https://github.com/open-wuxu/AssetStudio) | WUXU (物序) — an open-source industrial asset visualization and monitoring platform: asset registry, device topology, live sensor data and dashboards | Go / React / TypeScript |
 
 ### 🧩 Personal
 
@@ -85,6 +92,7 @@
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
   <a href="https://github.com/CrazyF-wind"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
   <a href="https://github.com/Open-Multiverse"><img src="https://img.shields.io/badge/Open--Multiverse-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="https://github.com/open-wuxu"><img src="https://img.shields.io/badge/open--wuxu-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
 </p>
 
 ---
