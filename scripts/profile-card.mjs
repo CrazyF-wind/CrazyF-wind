@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Render a profile summary card that aggregates the personal account and the
 // partner organizations: repositories, commits by the profile owner, and a
-// monthly commit trend over the last few years.
+// daily commit trend over the last month.
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
@@ -15,7 +15,8 @@ import {
 } from './lib/github.mjs';
 
 const OUTPUT = resolve('assets/profile-card.svg');
-const YEARS = 5;
+const DAYS = 30;
+const DAY = 24 * 60 * 60 * 1000;
 const integer = new Intl.NumberFormat('en-US');
 
 function escapeXml(value) {
@@ -37,18 +38,15 @@ async function commitsSince(repo, since) {
   return commits;
 }
 
-function monthKey(date) {
-  return `${date.getUTCFullYear()}-${date.getUTCMonth()}`;
+function dateKey(date) {
+  return `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()}`;
 }
 
-function buildMonths(from, to) {
-  const months = [];
-  for (let time = Date.UTC(from.getUTCFullYear(), from.getUTCMonth(), 1); time <= to.getTime(); ) {
-    const date = new Date(time);
-    months.push({ key: monthKey(date), year: date.getUTCFullYear(), count: 0 });
-    time = Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1);
-  }
-  return months;
+function buildDays(startTime, count) {
+  return Array.from({ length: count }, (_, index) => {
+    const date = new Date(startTime + index * DAY);
+    return { key: dateKey(date), date, count: 0 };
+  });
 }
 
 const ICONS = {
@@ -58,7 +56,7 @@ const ICONS = {
 };
 
 // Picks an integer step and rounded top so the right-hand axis carries a
-// handful of readable ticks regardless of how high the busiest month is.
+// handful of readable ticks regardless of how busy the busiest day is.
 function niceScale(max, targetTicks = 5) {
   const rawStep = max / targetTicks;
   const magnitude = 10 ** Math.floor(Math.log10(Math.max(rawStep, 1)));
@@ -122,12 +120,13 @@ function smoothPath(points) {
   return path;
 }
 
-function monthLabel(month) {
-  const [year, index] = month.key.split('-').map(Number);
-  return `${String(year % 100).padStart(2, '0')}/${String(index + 1).padStart(2, '0')}`;
+function dayLabel(day) {
+  return `${String(day.date.getUTCMonth() + 1).padStart(2, '0')}/${String(
+    day.date.getUTCDate(),
+  ).padStart(2, '0')}`;
 }
 
-export function renderSvg({ title, subtitle, caption, rows, months, max }) {
+export function renderSvg({ title, subtitle, caption, rows, days, max }) {
   const width = 700;
   const height = 270;
 
@@ -146,11 +145,11 @@ export function renderSvg({ title, subtitle, caption, rows, months, max }) {
   const yTop = 104;
   const yBottom = 220;
   const { top, ticks } = niceScale(max);
-  const step = months.length > 1 ? (x1 - x0) / (months.length - 1) : 0;
-  const points = months.map((month, index) => ({
+  const step = days.length > 1 ? (x1 - x0) / (days.length - 1) : 0;
+  const points = days.map((day, index) => ({
     x: x0 + step * index,
-    y: yBottom - (month.count / top) * (yBottom - yTop),
-    month,
+    y: yBottom - (day.count / top) * (yBottom - yTop),
+    day,
   }));
 
   const line = smoothPath(points);
@@ -179,11 +178,12 @@ export function renderSvg({ title, subtitle, caption, rows, months, max }) {
     })
     .join('\n');
 
-  const monthLabels = points
-    .filter((point, index) => point.month.key.endsWith('-0') || index === points.length - 1)
+  const dayLabels = points
+    .filter((_, index) => index % 7 === 0 && index <= points.length - 5)
+    .concat(points[points.length - 1])
     .map(
       (point) =>
-        `  <text class="axis-label" x="${point.x.toFixed(1)}" y="${yBottom + 18}" text-anchor="middle">${monthLabel(point.month)}</text>`,
+        `  <text class="axis-label" x="${point.x.toFixed(1)}" y="${yBottom + 18}" text-anchor="middle">${dayLabel(point.day)}</text>`,
     )
     .join('\n');
 
@@ -220,7 +220,7 @@ ${grid}
   <path class="trend" d="${line}" />
 ${axisLines}
 ${tickMarks}
-${monthLabels}
+${dayLabels}
 </svg>
 `;
 }
@@ -232,28 +232,26 @@ async function main() {
 
   const now = new Date();
   const currentYear = now.getUTCFullYear();
-  const createdYear = user?.created_at ? new Date(user.created_at).getUTCFullYear() : currentYear;
-  // Cover the last `YEARS` calendar years, never before the account was created.
-  const startYear = Math.max(Math.min(createdYear, currentYear), currentYear - YEARS + 1);
-  const start = new Date(Date.UTC(startYear, 0, 1));
-  const since = start.toISOString();
+  const todayStart = Date.UTC(currentYear, now.getUTCMonth(), now.getUTCDate());
+  const windowStart = todayStart - (DAYS - 1) * DAY;
+  const yearStart = Date.UTC(currentYear, 0, 1);
+  // Fetch enough history for both the chart window and the current-year total.
+  const since = new Date(Math.min(windowStart, yearStart)).toISOString();
 
-  const months = buildMonths(start, now);
-  const byMonth = new Map(months.map((month) => [month.key, month]));
+  const days = buildDays(windowStart, DAYS);
+  const byDay = new Map(days.map((day) => [day.key, day]));
 
+  let currentYearCommits = 0;
   for (const repo of repos) {
     for (const commit of await commitsSince(repo, since)) {
       if (!isOwnCommit(commit)) continue;
       const date = new Date(commit.commit?.author?.date ?? commit.commit?.committer?.date);
-      if (Number.isNaN(date.getTime()) || date < start) continue;
-      const bucket = byMonth.get(monthKey(date));
+      if (Number.isNaN(date.getTime())) continue;
+      if (date.getTime() >= yearStart) currentYearCommits += 1;
+      const bucket = byDay.get(dateKey(date));
       if (bucket) bucket.count += 1;
     }
   }
-
-  const currentYearCommits = months
-    .filter((month) => month.year === currentYear)
-    .reduce((sum, month) => sum + month.count, 0);
   const yearsJoined = user?.created_at
     ? Math.floor(
         (now.getTime() - new Date(user.created_at).getTime()) / (365.25 * 24 * 60 * 60 * 1000),
@@ -270,13 +268,8 @@ async function main() {
     },
   ];
 
-  const max = Math.max(1, ...months.map((month) => month.count));
-  const firstYear = months[0].year;
-  const lastYear = months[months.length - 1].year;
-  const caption =
-    firstYear === lastYear
-      ? 'commits by month'
-      : `commits by month · ${firstYear}–${lastYear}`;
+  const max = Math.max(1, ...days.map((day) => day.count));
+  const caption = `daily commits · last ${DAYS} days`;
 
   await mkdir(dirname(OUTPUT), { recursive: true });
   await writeFile(
@@ -286,7 +279,7 @@ async function main() {
       subtitle: owners.join(' · '),
       caption,
       rows,
-      months,
+      days,
       max,
     }),
     'utf8',
@@ -294,7 +287,7 @@ async function main() {
 
   console.log(`Wrote ${OUTPUT}`);
   console.log(`Repos: ${repos.length} (${owners.join(', ')})`);
-  console.log(`Months: ${months.length}, max: ${max}, ${currentYear}: ${currentYearCommits}`);
+  console.log(`Days: ${days.length}, max: ${max}, ${currentYear}: ${currentYearCommits}`);
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
