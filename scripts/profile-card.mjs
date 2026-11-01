@@ -126,7 +126,7 @@ function renderSvg({ title, subtitle, rows, months, max }) {
   <text class="title" x="24" y="46">${escapeXml(title)}</text>
   <text class="subtitle" x="24" y="66">${escapeXml(subtitle)}</text>
 ${rowMarkup}
-  <text class="caption" x="${x1}" y="84" text-anchor="end">commits in the last year</text>
+  <text class="caption" x="${x1}" y="84" text-anchor="end">monthly commits</text>
 ${grid}
   <path d="${area}" fill="url(#area)" />
   <path class="trend" d="${line}" />
@@ -167,9 +167,7 @@ async function main() {
   const rows = [
     {
       icon: 'commit',
-      text:
-        `${integer.format(lastYearCommits)} commit${lastYearCommits === 1 ? '' : 's'} in the last year` +
-        ' · all authors',
+      text: `${integer.format(lastYearCommits)} commits in the last year`,
     },
     { icon: 'repo', text: `${repos.length} public repos` },
     { icon: 'clock', text: years === null ? 'Joined GitHub' : `Joined GitHub ${years} years ago` },
@@ -182,7 +180,7 @@ async function main() {
     OUTPUT,
     renderSvg({
       title: `${name} (${PRIMARY})`,
-      subtitle: owners.join(' · '),
+      subtitle: `${owners.join(' · ')} · all authors`,
       rows,
       months,
       max,
