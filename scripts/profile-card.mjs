@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Render a profile summary card that aggregates the personal account and the
-// partner organizations: repositories, commits over the last year, and a
-// monthly commit trend chart.
+// partner organizations: repositories, calendar-year commits, and a yearly
+// commit bar chart.
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
@@ -9,7 +9,6 @@ import { collectRepos, getJson, resolveOwners } from './lib/github.mjs';
 
 const OUTPUT = resolve('assets/profile-card.svg');
 const PRIMARY = process.env.PRIMARY_OWNER || 'CrazyF-wind';
-const YEAR_MS = 365.25 * 24 * 60 * 60 * 1000;
 const integer = new Intl.NumberFormat('en-US');
 
 function escapeXml(value) {
@@ -31,33 +30,13 @@ async function commitsSince(repo, since) {
   return commits;
 }
 
-function monthKey(date) {
-  return `${date.getUTCFullYear()}-${date.getUTCMonth()}`;
-}
-
-function buildMonths(now) {
-  const months = [];
-  for (let offset = 11; offset >= 0; offset -= 1) {
-    const date = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - offset, 1));
-    months.push({
-      key: monthKey(date),
-      label: `${String(date.getUTCFullYear()).slice(2)}/${String(date.getUTCMonth() + 1).padStart(2, '0')}`,
-      count: 0,
-    });
-  }
-  return months;
-}
-
 const ICONS = {
-  commit:
-    '<circle cx="8" cy="8" r="3.5" /><path d="M0 8h4.5M11.5 8H16" />',
-  repo:
-    '<rect x="1.5" y="2" width="13" height="12" rx="2" /><path d="M5 2v12" />',
-  clock:
-    '<circle cx="8" cy="8" r="6.5" /><path d="M8 4.5V8l2.5 1.5" />',
+  commit: '<circle cx="8" cy="8" r="3.5" /><path d="M0 8h4.5M11.5 8H16" />',
+  repo: '<rect x="1.5" y="2" width="13" height="12" rx="2" /><path d="M5 2v12" />',
+  clock: '<circle cx="8" cy="8" r="6.5" /><path d="M8 4.5V8l2.5 1.5" />',
 };
 
-function renderSvg({ title, subtitle, rows, months, max }) {
+function renderSvg({ title, subtitle, rows, years, max }) {
   const width = 700;
   const height = 270;
 
@@ -75,15 +54,21 @@ function renderSvg({ title, subtitle, rows, months, max }) {
   const x1 = 676;
   const yTop = 104;
   const yBottom = 220;
-  const step = months.length > 1 ? (x1 - x0) / (months.length - 1) : 0;
-  const points = months.map((month, index) => {
-    const x = x0 + step * index;
-    const y = yBottom - (month.count / max) * (yBottom - yTop);
-    return { x, y, month };
-  });
+  const slot = years.length > 0 ? (x1 - x0) / years.length : 0;
+  const barWidth = Math.min(18, slot * 0.55);
+  const labelStep = years.length > 15 ? 2 : 1;
 
-  const line = points.map((point, index) => `${index === 0 ? 'M' : 'L'}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(' ');
-  const area = `${line} L${x1} ${yBottom} L${x0} ${yBottom} Z`;
+  const bars = years
+    .map((year, index) => {
+      const barHeight = (year.count / max) * (yBottom - yTop);
+      if (barHeight <= 0) return '';
+      const x = x0 + slot * index + (slot - barWidth) / 2;
+      return `  <rect class="bar" x="${x.toFixed(1)}" y="${(yBottom - barHeight).toFixed(
+        1,
+      )}" width="${barWidth.toFixed(1)}" height="${barHeight.toFixed(1)}" rx="2" />`;
+    })
+    .filter(Boolean)
+    .join('\n');
 
   const grid = [0, 0.5, 1]
     .map((ratio) => {
@@ -92,21 +77,18 @@ function renderSvg({ title, subtitle, rows, months, max }) {
     })
     .join('\n');
 
-  const xLabels = points
-    .filter((point, index) => index % 2 === 0 || index === points.length - 1)
-    .map(
-      (point) =>
-        `  <text class="axis" x="${point.x.toFixed(1)}" y="${yBottom + 18}" text-anchor="middle">${point.month.label}</text>`,
+  const xLabels = years
+    .map((year, index) =>
+      index % labelStep === 0 || index === years.length - 1
+        ? `  <text class="axis" x="${(x0 + slot * (index + 0.5)).toFixed(
+            1,
+          )}" y="${yBottom + 18}" text-anchor="middle">${year.label}</text>`
+        : '',
     )
+    .filter(Boolean)
     .join('\n');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(title)} profile summary">
-  <defs>
-    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2F81F7" stop-opacity="0.45" />
-      <stop offset="100%" stop-color="#2F81F7" stop-opacity="0.03" />
-    </linearGradient>
-  </defs>
   <style>
     .title { fill: #1f2328; font: 600 22px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
     .subtitle, .row, .axis { fill: #57606a; font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
@@ -115,7 +97,7 @@ function renderSvg({ title, subtitle, rows, months, max }) {
     .caption { fill: #57606a; font: 10px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
     .icon { fill: none; stroke: #57606a; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
     .grid { stroke: #d0d7de; stroke-width: 1; stroke-dasharray: 3 3; }
-    .trend { fill: none; stroke: #2F81F7; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+    .bar { fill: #2F81F7; }
     @media (prefers-color-scheme: dark) {
       .title { fill: #e6edf3; }
       .subtitle, .row, .axis, .caption { fill: #8b949e; }
@@ -126,11 +108,10 @@ function renderSvg({ title, subtitle, rows, months, max }) {
   <text class="title" x="24" y="46">${escapeXml(title)}</text>
   <text class="subtitle" x="24" y="66">${escapeXml(subtitle)}</text>
 ${rowMarkup}
-  <text class="caption" x="${x1}" y="84" text-anchor="end">monthly commits</text>
+  <text class="caption" x="${x1}" y="84" text-anchor="end">commits per year</text>
 ${grid}
-  <path d="${area}" fill="url(#area)" />
-  <path class="trend" d="${line}" />
-  <text class="axis" x="${x0 - 8}" y="${yTop + 4}" text-anchor="end">${max}</text>
+${bars}
+  <text class="axis" x="${x0 - 8}" y="${yTop + 4}" text-anchor="end">${integer.format(max)}</text>
   <text class="axis" x="${x0 - 8}" y="${yBottom + 4}" text-anchor="end">0</text>
 ${xLabels}
 </svg>
@@ -140,40 +121,55 @@ ${xLabels}
 async function main() {
   const owners = resolveOwners();
   const repos = await collectRepos(owners);
+  const user = await getJson(`/users/${PRIMARY}`);
+
   const now = new Date();
-  const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 11, 1));
-  const since = start.toISOString();
+  const currentYear = now.getUTCFullYear();
+  const createdYear = user?.created_at
+    ? new Date(user.created_at).getUTCFullYear()
+    : currentYear;
+  const startYear = Math.min(createdYear, currentYear);
+  const since = new Date(Date.UTC(startYear, 0, 1)).toISOString();
 
-  const months = buildMonths(now);
-  const byMonth = new Map(months.map((month) => [month.key, month]));
+  const years = [];
+  for (let year = startYear; year <= currentYear; year += 1) {
+    years.push({ label: String(year), count: 0 });
+  }
+  const byYear = new Map(years.map((year) => [year.label, year]));
 
-  let lastYearCommits = 0;
   for (const repo of repos) {
     for (const commit of await commitsSince(repo, since)) {
       const date = new Date(commit.commit?.author?.date ?? commit.commit?.committer?.date);
-      if (Number.isNaN(date.getTime()) || date < start) continue;
-      lastYearCommits += 1;
-      const month = byMonth.get(monthKey(date));
-      if (month) month.count += 1;
+      if (Number.isNaN(date.getTime())) continue;
+      const bucket = byYear.get(String(date.getUTCFullYear()));
+      if (bucket) bucket.count += 1;
     }
   }
 
-  const user = await getJson(`/users/${PRIMARY}`);
-  const years = user?.created_at
-    ? Math.floor((now.getTime() - new Date(user.created_at).getTime()) / YEAR_MS)
+  const yearTotal = years.reduce((sum, year) => sum + year.count, 0);
+  const currentYearCommits = byYear.get(String(currentYear))?.count ?? 0;
+  const yearsJoined = user?.created_at
+    ? Math.floor(
+        (now.getTime() - new Date(user.created_at).getTime()) / (365.25 * 24 * 60 * 60 * 1000),
+      )
     : null;
   const name = user?.name || PRIMARY;
 
   const rows = [
     {
       icon: 'commit',
-      text: `${integer.format(lastYearCommits)} commits in the last year`,
+      text: `${integer.format(currentYearCommits)} commits in ${currentYear} · ${integer.format(
+        yearTotal,
+      )} total`,
     },
     { icon: 'repo', text: `${repos.length} public repos` },
-    { icon: 'clock', text: years === null ? 'Joined GitHub' : `Joined GitHub ${years} years ago` },
+    {
+      icon: 'clock',
+      text: yearsJoined === null ? 'Joined GitHub' : `Joined GitHub ${yearsJoined} years ago`,
+    },
   ];
 
-  const max = Math.max(1, ...months.map((month) => month.count));
+  const max = Math.max(1, ...years.map((year) => year.count));
 
   await mkdir(dirname(OUTPUT), { recursive: true });
   await writeFile(
@@ -182,7 +178,7 @@ async function main() {
       title: `${name} (${PRIMARY})`,
       subtitle: `${owners.join(' · ')} · all authors`,
       rows,
-      months,
+      years,
       max,
     }),
     'utf8',
@@ -190,8 +186,8 @@ async function main() {
 
   console.log(`Wrote ${OUTPUT}`);
   console.log(`Repos: ${repos.length} (${owners.join(', ')})`);
-  console.log(`Commits in the last year: ${lastYearCommits}`);
-  console.log(months.map((month) => `${month.label}=${month.count}`).join(' '));
+  console.log(years.map((year) => `${year.label}=${year.count}`).join(' '));
+  console.log(`Total: ${yearTotal}, ${currentYear}: ${currentYearCommits}`);
 }
 
 main().catch((error) => {
