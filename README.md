@@ -62,9 +62,9 @@
 
 | Project | Description | Tech |
 | --- | --- | --- |
-| [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | A weather-advice Skill that makes agents look at the evidence first, then recommend — docs + JSON Schema + 32 acceptance cases | Markdown / JSON Schema |
-| [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | Extract verifiable explanation models (VEM) from technical articles, then render and validate accurate SVG diagrams | Python / SVG |
-| [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | A resumable, traceable iterative research-collection and knowledge-distillation Skill | Python |
+| [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | Guanxiang (观象) — reads the weather evidence first, then turns it into actions you can take today; entry Skill + JSON Schema + 6 examples + 32 acceptance cases | Markdown / JSON Schema / Python |
+| [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | Gewu (格物) — a technical-knowledge visual explanation engine: finds what is worth visualizing, extracts a verifiable explanation model (VEM), then renders and validates accurate SVG diagrams | Python / SVG |
+| [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | Wanxiang (万象) — turns a research objective into a resumable, traceable local knowledge base: discovery, compliant collection, evidence extraction, Markdown / CSV / static HTML export | Python / Markdown |
 
 ### 🎮 Visual Engine & Games — [Open-Multiverse](https://github.com/Open-Multiverse)
 
@@ -76,7 +76,7 @@
 
 | Project | Description | Tech |
 | --- | --- | --- |
-| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | Runnable companion code for my blog — self-contained examples across backend, frontend and DevOps | Go / Node.js |
+| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | Runnable companion code for my blog — six self-contained examples across backend, frontend and DevOps, each linked to its article | Go / Node.js |
 | [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | Source of my personal tech blog — a static site published with GitHub Pages | HTML / CSS / JS |
 
 ## 📫 Find Me

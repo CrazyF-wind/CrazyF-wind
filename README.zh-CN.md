@@ -62,9 +62,9 @@
 
 | 项目 | 简介 | 技术 |
 | --- | --- | --- |
-| [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | 让 Agent 「先看证据，再给建议」的天气建议 Skill —— 文档 + JSON Schema + 32 条验收用例 | Markdown / JSON Schema |
-| [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | 格物：从技术文章中提取可验证的解释模型（VEM），渲染并校验准确的 SVG 原理图 | Python / SVG |
-| [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | 研究侦察员：可断点续跑、可追溯的迭代式行业研究采集与知识沉淀 | Python |
+| [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | 观象：先看天气证据，再把它变成今天就能执行的动作 —— 入口 Skill + JSON Schema + 6 组示例 + 32 条验收用例 | Markdown / JSON Schema / Python |
+| [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | 格物：技术知识视觉解释引擎 —— 先发现真正值得画的原理，提取可验证的解释模型（VEM），再渲染并校验准确的 SVG 原理图 | Python / SVG |
+| [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | 万象：把研究主题变成可断点续跑、可追溯的本地知识库 —— 来源发现、合规采集、证据抽取，导出 Markdown / CSV / 静态 HTML | Python / Markdown |
 
 ### 🎮 视觉引擎 & 游戏 —— [Open-Multiverse](https://github.com/Open-Multiverse)
 
@@ -76,7 +76,7 @@
 
 | 项目 | 简介 | 技术 |
 | --- | --- | --- |
-| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | 博客文章的「可运行版本」—— 后端、前端、DevOps 各领域的自包含示例 | Go / Node.js |
+| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | 博客文章的「可运行版本」—— 后端、前端、DevOps 六个自包含示例，每个都对应一篇文章 | Go / Node.js |
 | [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | 个人技术博客源码，通过 GitHub Pages 发布的静态站点 | HTML / CSS / JS |
 
 ## 📫 找到我
