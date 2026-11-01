@@ -1,4 +1,4 @@
-name: Update top languages
+name: Update profile stats
 
 on:
   schedule:
@@ -8,8 +8,8 @@ on:
   push:
     branches: [master]
     paths:
-      - 'scripts/top-languages.mjs'
-      - '.github/workflows/top-languages.yml'
+      - 'scripts/**'
+      - '.github/workflows/stats.yml'
 
 permissions:
   contents: write
@@ -29,14 +29,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/top-languages.mjs
 
+      - name: Generate contributions card
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/contributions.mjs
+
       - name: Commit changes
         run: |
-          if git diff --quiet -- assets/top-languages.svg; then
+          if [ -z "$(git status --porcelain -- assets)" ]; then
             echo "Stats unchanged, nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/top-languages.svg
-          git commit -m "chore: update top languages stats"
+          git add assets/top-languages.svg assets/contributions.svg
+          git commit -m "chore: update profile stats"
           git push

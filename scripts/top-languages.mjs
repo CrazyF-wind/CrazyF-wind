@@ -9,15 +9,10 @@
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
+import { collectRepos, getJson, resolveOwners } from './lib/github.mjs';
 
-const OWNERS = (process.env.OWNERS ?? 'CrazyF-wind,tavorit-dev,Open-Multiverse')
-  .split(',')
-  .map((owner) => owner.trim())
-  .filter(Boolean);
 const OUTPUT = resolve('assets/top-languages.svg');
 const TOP_N = 8;
-const API = 'https://api.github.com';
-const TOKEN = process.env.GITHUB_TOKEN;
 
 // Linguist colours for the languages that actually show up in these repos.
 const LANGUAGE_COLORS = {
@@ -59,34 +54,6 @@ const LANGUAGE_COLORS = {
 };
 
 const FALLBACK_COLORS = ['#8250df', '#1a7f37', '#bc4c00', '#0969da', '#cf222e', '#6639ba'];
-
-const headers = {
-  Accept: 'application/vnd.github+json',
-  'User-Agent': 'top-languages-card',
-};
-if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`;
-
-async function getJson(path) {
-  const response = await fetch(`${API}${path}`, { headers });
-  if (response.status === 404) return null;
-  if (!response.ok) {
-    throw new Error(`${path} -> ${response.status} ${await response.text()}`);
-  }
-  return response.json();
-}
-
-async function listRepos(owner) {
-  const repos = [];
-  for (let page = 1; ; page += 1) {
-    const orgBatch = await getJson(`/orgs/${owner}/repos?type=public&per_page=100&page=${page}`);
-    const batch =
-      orgBatch ?? (await getJson(`/users/${owner}/repos?type=owner&per_page=100&page=${page}`));
-    if (!batch || batch.length === 0) break;
-    repos.push(...batch);
-    if (batch.length < 100) break;
-  }
-  return repos;
-}
 
 function colorFor(language, index) {
   return LANGUAGE_COLORS[language] ?? FALLBACK_COLORS[index % FALLBACK_COLORS.length];
@@ -144,17 +111,8 @@ ${rows}
 }
 
 async function main() {
-  const seen = new Set();
-  const repos = [];
-
-  for (const owner of OWNERS) {
-    const ownerRepos = await listRepos(owner);
-    for (const repo of ownerRepos) {
-      if (repo.fork || repo.name === '.github' || seen.has(repo.full_name)) continue;
-      seen.add(repo.full_name);
-      repos.push(repo);
-    }
-  }
+  const owners = resolveOwners();
+  const repos = await collectRepos(owners);
 
   const totals = new Map();
   for (const repo of repos) {
@@ -178,12 +136,13 @@ async function main() {
   }
 
   await mkdir(dirname(OUTPUT), { recursive: true });
-  await writeFile(OUTPUT, renderSvg(top, { repos: repos.length, owners: OWNERS }), 'utf8');
+  await writeFile(OUTPUT, renderSvg(top, { repos: repos.length, owners }), 'utf8');
 
   console.log(`Wrote ${OUTPUT}`);
-  console.log(`Repos: ${repos.length} (${OWNERS.join(', ')})`);
+  console.log(`Repos: ${repos.length} (${owners.join(', ')})`);
+  const totalBytes = sorted.reduce((sum, entry) => sum + entry.bytes, 0);
   for (const entry of top) {
-    const percent = ((entry.bytes / sorted.reduce((sum, item) => sum + item.bytes, 0)) * 100).toFixed(1);
+    const percent = ((entry.bytes / totalBytes) * 100).toFixed(1);
     console.log(`  ${entry.name.padEnd(16)} ${percent.padStart(5)}%  ${entry.bytes} bytes`);
   }
 }
