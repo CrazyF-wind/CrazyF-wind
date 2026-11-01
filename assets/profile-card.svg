@@ -16,9 +16,9 @@
     }
   </style>
   <text class="title" x="24" y="46">HashTable (CrazyF-wind)</text>
-  <text class="subtitle" x="24" y="66">CrazyF-wind · tavorit-dev · Open-Multiverse · all authors</text>
+  <text class="subtitle" x="24" y="66">CrazyF-wind · tavorit-dev · Open-Multiverse</text>
   <g class="icon" transform="translate(24 100)"><circle cx="8" cy="8" r="3.5" /><path d="M0 8h4.5M11.5 8H16" /></g>
-  <text class="row" x="50" y="112">192 commits in 2026 · 195 total</text>
+  <text class="row" x="50" y="112">2 commits in 2026 · 2 total</text>
   <g class="icon" transform="translate(24 140)"><rect x="1.5" y="2" width="13" height="12" rx="2" /><path d="M5 2v12" /></g>
   <text class="row" x="50" y="152">9 public repos</text>
   <g class="icon" transform="translate(24 180)"><circle cx="8" cy="8" r="6.5" /><path d="M8 4.5V8l2.5 1.5" /></g>
@@ -27,10 +27,8 @@
   <line class="grid" x1="300" y1="220.0" x2="676" y2="220.0" />
   <line class="grid" x1="300" y1="162.0" x2="676" y2="162.0" />
   <line class="grid" x1="300" y1="104.0" x2="676" y2="104.0" />
-  <rect class="bar" x="359.8" y="219.4" width="14.8" height="0.6" rx="2" />
-  <rect class="bar" x="628.3" y="218.8" width="14.8" height="1.2" rx="2" />
   <rect class="bar" x="655.2" y="104.0" width="14.8" height="116.0" rx="2" />
-  <text class="axis" x="292" y="108" text-anchor="end">192</text>
+  <text class="axis" x="292" y="108" text-anchor="end">2</text>
   <text class="axis" x="292" y="224" text-anchor="end">0</text>
   <text class="axis" x="313.4" y="238" text-anchor="middle">2013</text>
   <text class="axis" x="340.3" y="238" text-anchor="middle">2014</text>
