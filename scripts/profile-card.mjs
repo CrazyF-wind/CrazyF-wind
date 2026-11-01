@@ -139,6 +139,8 @@ async function main() {
 
   for (const repo of repos) {
     for (const commit of await commitsSince(repo, since)) {
+      // Count only commits attributed to the profile owner's GitHub account.
+      if (commit.author?.login?.toLowerCase() !== PRIMARY.toLowerCase()) continue;
       const date = new Date(commit.commit?.author?.date ?? commit.commit?.committer?.date);
       if (Number.isNaN(date.getTime())) continue;
       const bucket = byYear.get(String(date.getUTCFullYear()));
@@ -176,7 +178,7 @@ async function main() {
     OUTPUT,
     renderSvg({
       title: `${name} (${PRIMARY})`,
-      subtitle: `${owners.join(' · ')} · all authors`,
+      subtitle: owners.join(' · '),
       rows,
       years,
       max,
