@@ -25,7 +25,8 @@ async function request(path) {
 
 export async function getJson(path) {
   const response = await request(path);
-  if (response.status === 404) return null;
+  // 409 means the repository exists but is empty, which callers can treat as null.
+  if (response.status === 404 || response.status === 409) return null;
   if (!response.ok) {
     throw new Error(`${path} -> ${response.status} ${await response.text()}`);
   }
