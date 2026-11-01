@@ -5,6 +5,7 @@
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   PRIMARY_OWNER,
   collectRepos,
@@ -56,7 +57,77 @@ const ICONS = {
   clock: '<circle cx="8" cy="8" r="6.5" /><path d="M8 4.5V8l2.5 1.5" />',
 };
 
-function renderSvg({ title, subtitle, rows, months, max }) {
+// Picks an integer step and rounded top so the right-hand axis carries a
+// handful of readable ticks regardless of how high the busiest month is.
+function niceScale(max, targetTicks = 5) {
+  const rawStep = max / targetTicks;
+  const magnitude = 10 ** Math.floor(Math.log10(Math.max(rawStep, 1)));
+  const step = Math.max(
+    1,
+    [1, 2, 5, 10]
+      .map((factor) => factor * magnitude)
+      .find((value) => value >= rawStep) ?? magnitude * 10,
+  );
+  const top = Math.ceil(max / step) * step;
+  const ticks = [];
+  for (let value = 0; value <= top + 1e-9; value += step) ticks.push(Math.round(value));
+  return { top, ticks };
+}
+
+// Monotone cubic interpolation (Fritsch–Carlson): smooth like the reference
+// chart, without overshooting above a peak or dipping below the baseline.
+function smoothPath(points) {
+  if (points.length === 0) return '';
+  if (points.length === 1) return `M${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+
+  const slopes = points.slice(1).map((point, index) => {
+    const previous = points[index];
+    return (point.y - previous.y) / (point.x - previous.x);
+  });
+  const tangents = new Array(points.length);
+  tangents[0] = slopes[0];
+  tangents[points.length - 1] = slopes[slopes.length - 1];
+  for (let index = 1; index < points.length - 1; index += 1) {
+    tangents[index] =
+      slopes[index - 1] * slopes[index] <= 0
+        ? 0
+        : (slopes[index - 1] + slopes[index]) / 2;
+  }
+  for (let index = 0; index < slopes.length; index += 1) {
+    if (slopes[index] === 0) {
+      tangents[index] = 0;
+      tangents[index + 1] = 0;
+      continue;
+    }
+    const alpha = tangents[index] / slopes[index];
+    const beta = tangents[index + 1] / slopes[index];
+    const squared = alpha * alpha + beta * beta;
+    if (squared > 9) {
+      const scale = 3 / Math.sqrt(squared);
+      tangents[index] = scale * alpha * slopes[index];
+      tangents[index + 1] = scale * beta * slopes[index];
+    }
+  }
+
+  let path = `M${points[0].x.toFixed(1)} ${points[0].y.toFixed(1)}`;
+  for (let index = 0; index < points.length - 1; index += 1) {
+    const from = points[index];
+    const to = points[index + 1];
+    const handle = (to.x - from.x) / 3;
+    path +=
+      ` C${(from.x + handle).toFixed(1)} ${(from.y + tangents[index] * handle).toFixed(1)}` +
+      ` ${(to.x - handle).toFixed(1)} ${(to.y - tangents[index + 1] * handle).toFixed(1)}` +
+      ` ${to.x.toFixed(1)} ${to.y.toFixed(1)}`;
+  }
+  return path;
+}
+
+function monthLabel(month) {
+  const [year, index] = month.key.split('-').map(Number);
+  return `${String(year % 100).padStart(2, '0')}/${String(index + 1).padStart(2, '0')}`;
+}
+
+export function renderSvg({ title, subtitle, caption, rows, months, max }) {
   const width = 700;
   const height = 270;
 
@@ -74,66 +145,82 @@ function renderSvg({ title, subtitle, rows, months, max }) {
   const x1 = 676;
   const yTop = 104;
   const yBottom = 220;
+  const { top, ticks } = niceScale(max);
   const step = months.length > 1 ? (x1 - x0) / (months.length - 1) : 0;
   const points = months.map((month, index) => ({
     x: x0 + step * index,
-    y: yBottom - (month.count / max) * (yBottom - yTop),
+    y: yBottom - (month.count / top) * (yBottom - yTop),
     month,
   }));
 
-  const line = points
-    .map((point, index) => `${index === 0 ? 'M' : 'L'}${point.x.toFixed(1)} ${point.y.toFixed(1)}`)
-    .join(' ');
-  const area = `${line} L${x1} ${yBottom} L${x0} ${yBottom} Z`;
+  const line = smoothPath(points);
+  const area = `${line} L${x1.toFixed(1)} ${yBottom} L${x0.toFixed(1)} ${yBottom} Z`;
 
-  const grid = [0, 0.5, 1]
-    .map((ratio) => {
-      const y = yBottom - ratio * (yBottom - yTop);
+  const grid = ticks
+    .filter((value) => value > 0 && value < top)
+    .map((value) => {
+      const y = yBottom - (value / top) * (yBottom - yTop);
       return `  <line class="grid" x1="${x0}" y1="${y.toFixed(1)}" x2="${x1}" y2="${y.toFixed(1)}" />`;
     })
     .join('\n');
 
-  const yearLabels = points
-    .filter((point) => point.month.key.endsWith('-0'))
+  const axisLines = [
+    `  <line class="axis-line" x1="${x0}" y1="${yBottom}" x2="${x1}" y2="${yBottom}" />`,
+    `  <line class="axis-line" x1="${x1}" y1="${yBottom}" x2="${x1}" y2="${yTop}" />`,
+  ].join('\n');
+
+  const tickMarks = ticks
+    .map((value) => {
+      const y = yBottom - (value / top) * (yBottom - yTop);
+      return [
+        `  <line class="axis-line" x1="${x1}" y1="${y.toFixed(1)}" x2="${x1 + 3}" y2="${y.toFixed(1)}" />`,
+        `  <text class="axis-label" x="${x1 + 6}" y="${(y + 3).toFixed(1)}">${integer.format(value)}</text>`,
+      ].join('\n');
+    })
+    .join('\n');
+
+  const monthLabels = points
+    .filter((point, index) => point.month.key.endsWith('-0') || index === points.length - 1)
     .map(
       (point) =>
-        `  <text class="axis" x="${point.x.toFixed(1)}" y="${yBottom + 18}" text-anchor="middle">${point.month.year}</text>`,
+        `  <text class="axis-label" x="${point.x.toFixed(1)}" y="${yBottom + 18}" text-anchor="middle">${monthLabel(point.month)}</text>`,
     )
     .join('\n');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(title)} profile summary">
   <defs>
     <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2F81F7" stop-opacity="0.45" />
-      <stop offset="100%" stop-color="#2F81F7" stop-opacity="0.03" />
+      <stop offset="0%" stop-color="#2F81F7" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#2F81F7" stop-opacity="0.05" />
     </linearGradient>
   </defs>
   <style>
     .title { fill: #1f2328; font: 600 22px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
-    .subtitle, .row, .axis { fill: #57606a; font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+    .subtitle, .row { fill: #57606a; font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
     .subtitle { font-size: 11px; }
-    .axis { font-size: 9px; }
+    .axis-label { fill: #57606a; font: 9px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
     .caption { fill: #57606a; font: 10px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
     .icon { fill: none; stroke: #57606a; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
     .grid { stroke: #d0d7de; stroke-width: 1; stroke-dasharray: 3 3; }
+    .axis-line { stroke: #d0d7de; stroke-width: 1; }
     .trend { fill: none; stroke: #2F81F7; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
     @media (prefers-color-scheme: dark) {
       .title { fill: #e6edf3; }
-      .subtitle, .row, .axis, .caption { fill: #8b949e; }
+      .subtitle, .row, .axis-label, .caption { fill: #8b949e; }
       .icon { stroke: #8b949e; }
-      .grid { stroke: #30363d; }
+      .grid, .axis-line { stroke: #30363d; }
     }
   </style>
   <text class="title" x="24" y="46">${escapeXml(title)}</text>
   <text class="subtitle" x="24" y="66">${escapeXml(subtitle)}</text>
 ${rowMarkup}
-  <text class="caption" x="${x1}" y="84" text-anchor="end">monthly commits</text>
+  <text class="caption" x="${x1}" y="84" text-anchor="end">${escapeXml(caption)}</text>
 ${grid}
   <path d="${area}" fill="url(#area)" />
   <path class="trend" d="${line}" />
-  <text class="axis" x="${x0 - 8}" y="${yTop + 4}" text-anchor="end">${integer.format(max)}</text>
-  <text class="axis" x="${x0 - 8}" y="${yBottom + 4}" text-anchor="end">0</text>
-${yearLabels}
+${axisLines}
+${tickMarks}
+${monthLabels}
 </svg>
 `;
 }
@@ -184,6 +271,12 @@ async function main() {
   ];
 
   const max = Math.max(1, ...months.map((month) => month.count));
+  const firstYear = months[0].year;
+  const lastYear = months[months.length - 1].year;
+  const caption =
+    firstYear === lastYear
+      ? 'commits by month'
+      : `commits by month · ${firstYear}–${lastYear}`;
 
   await mkdir(dirname(OUTPUT), { recursive: true });
   await writeFile(
@@ -191,6 +284,7 @@ async function main() {
     renderSvg({
       title: `${name} (${PRIMARY_OWNER})`,
       subtitle: owners.join(' · '),
+      caption,
       rows,
       months,
       max,
@@ -203,7 +297,9 @@ async function main() {
   console.log(`Months: ${months.length}, max: ${max}, ${currentYear}: ${currentYearCommits}`);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
