@@ -4,6 +4,31 @@ export const API = 'https://api.github.com';
 
 const DEFAULT_OWNERS = ['CrazyF-wind', 'tavorit-dev', 'Open-Multiverse'];
 
+export const PRIMARY_OWNER = process.env.PRIMARY_OWNER || 'CrazyF-wind';
+
+// The same person commits under several identities across projects, and the
+// commits are not linked to the GitHub account, so match names and emails too.
+const AUTHOR_EMAILS = new Set(
+  (process.env.AUTHOR_EMAILS || 'fengf@dosec.cn,ff1990@126.com')
+    .split(',')
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean),
+);
+const AUTHOR_NAMES = new Set(
+  (process.env.AUTHOR_NAMES || 'fengf,crazyf-wind,hashtable,fwind')
+    .split(',')
+    .map((name) => name.trim().toLowerCase())
+    .filter(Boolean),
+);
+
+export function isOwnCommit(commit) {
+  if (commit.author?.login?.toLowerCase() === PRIMARY_OWNER.toLowerCase()) return true;
+  const email = commit.commit?.author?.email?.toLowerCase();
+  if (email && AUTHOR_EMAILS.has(email)) return true;
+  const name = commit.commit?.author?.name?.toLowerCase();
+  return Boolean(name && AUTHOR_NAMES.has(name));
+}
+
 const token = process.env.GITHUB_TOKEN;
 const headers = {
   Accept: 'application/vnd.github+json',
@@ -45,6 +70,20 @@ export async function getCount(path) {
   if (last) return Number(last[1]);
   const items = await response.json();
   return Array.isArray(items) ? items.length : 0;
+}
+
+// Fetches every item of a paginated collection (used when items must be
+// filtered client-side, e.g. by author).
+export async function getAll(path) {
+  const items = [];
+  const separator = path.includes('?') ? '&' : '?';
+  for (let page = 1; ; page += 1) {
+    const batch = await getJson(`${path}${separator}per_page=100&page=${page}`);
+    if (!Array.isArray(batch) || batch.length === 0) break;
+    items.push(...batch);
+    if (batch.length < 100) break;
+  }
+  return items;
 }
 
 async function listRepos(owner) {

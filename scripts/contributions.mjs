@@ -4,7 +4,14 @@
 
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
-import { collectRepos, getCount, resolveOwners } from './lib/github.mjs';
+import {
+  PRIMARY_OWNER,
+  collectRepos,
+  getAll,
+  getJson,
+  isOwnCommit,
+  resolveOwners,
+} from './lib/github.mjs';
 
 const OUTPUT = resolve('assets/contributions.svg');
 
@@ -57,22 +64,29 @@ ${tiles}
 async function main() {
   const owners = resolveOwners();
   const repos = await collectRepos(owners);
+  const user = await getJson(`/users/${PRIMARY_OWNER}`);
+  const since = user?.created_at ? new Date(user.created_at).toISOString() : undefined;
+  const login = PRIMARY_OWNER.toLowerCase();
 
   const counts = { commits: 0, pulls: 0, issues: 0, stars: 0 };
 
   for (const repo of repos) {
     const fullName = repo.full_name;
     const branch = encodeURIComponent(repo.default_branch || 'HEAD');
-    const [commits, pulls, issueTotal] = await Promise.all([
-      getCount(`/repos/${fullName}/commits?sha=${branch}&per_page=1`),
-      getCount(`/repos/${fullName}/pulls?state=all&per_page=1`),
-      // The issues endpoint also returns pull requests, so subtract them below.
-      getCount(`/repos/${fullName}/issues?state=all&per_page=1`),
+    const commitPath = `/repos/${fullName}/commits?sha=${branch}${since ? `&since=${since}` : ''}`;
+
+    const [commits, pulls, issues] = await Promise.all([
+      getAll(commitPath),
+      getAll(`/repos/${fullName}/pulls?state=all`),
+      getAll(`/repos/${fullName}/issues?state=all`),
     ]);
 
-    counts.commits += commits;
-    counts.pulls += pulls;
-    counts.issues += Math.max(0, issueTotal - pulls);
+    counts.commits += commits.filter(isOwnCommit).length;
+    counts.pulls += pulls.filter((pull) => pull.user?.login?.toLowerCase() === login).length;
+    counts.issues += issues.filter(
+      (issue) => !issue.pull_request && issue.user?.login?.toLowerCase() === login,
+    ).length;
+    // Stars are a repository metric and cannot be attributed to a single author.
     counts.stars += repo.stargazers_count ?? 0;
   }
 
