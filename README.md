@@ -48,19 +48,31 @@
 </p>
 
 <p align="center">
-  <img width="420" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=CrazyF-wind&theme=transparent" alt="Repos Per Language" />
+  <img width="495" src="assets/top-languages.svg" alt="Top Languages" />
   <img width="420" src="https://streak-stats.demolab.com?user=CrazyF-wind&hide_border=true&theme=transparent" alt="GitHub Streak" />
 </p>
 
 ## 🚀 Projects
+
+### 🤖 Agent Applications — [tavorit-dev](https://github.com/tavorit-dev)
 
 | Project | Description | Tech |
 | --- | --- | --- |
 | [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | A weather-advice Skill that makes agents look at the evidence first, then recommend — docs + JSON Schema + 32 acceptance cases | Markdown / JSON Schema |
 | [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | Extract verifiable explanation models (VEM) from technical articles, then render and validate accurate SVG diagrams | Python / SVG |
 | [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | A resumable, traceable iterative research-collection and knowledge-distillation Skill | Python |
-| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | Runnable companion code for my blog — self-contained examples across backend, frontend and DevOps | Go / Node.js |
+
+### 🎮 Visual Engine & Games — [Open-Multiverse](https://github.com/Open-Multiverse)
+
+| Project | Description | Tech |
+| --- | --- | --- |
 | [NovaEngine](https://github.com/Open-Multiverse/NovaEngine) | A Web 3D game engine built with Rust and WebAssembly — WebGPU rendering, Rapier3D physics, egui UI | Rust / WebAssembly |
+
+### 🧩 Personal
+
+| Project | Description | Tech |
+| --- | --- | --- |
+| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | Runnable companion code for my blog — self-contained examples across backend, frontend and DevOps | Go / Node.js |
 | [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | Source of my personal tech blog — a static site published with GitHub Pages | HTML / CSS / JS |
 
 ## 📫 Find Me

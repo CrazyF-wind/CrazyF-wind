@@ -48,19 +48,31 @@
 </p>
 
 <p align="center">
-  <img width="420" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=CrazyF-wind&theme=transparent" alt="Repos Per Language" />
+  <img width="495" src="assets/top-languages.svg" alt="Top Languages" />
   <img width="420" src="https://streak-stats.demolab.com?user=CrazyF-wind&hide_border=true&theme=transparent" alt="GitHub Streak" />
 </p>
 
 ## 🚀 项目
+
+### 🤖 Agent 应用 —— [tavorit-dev](https://github.com/tavorit-dev)
 
 | 项目 | 简介 | 技术 |
 | --- | --- | --- |
 | [weather-advisor-skill](https://github.com/tavorit-dev/weather-advisor-skill) | 让 Agent 「先看证据，再给建议」的天气建议 Skill —— 文档 + JSON Schema + 32 条验收用例 | Markdown / JSON Schema |
 | [Gewu-skill](https://github.com/tavorit-dev/Gewu-skill) | 格物：从技术文章中提取可验证的解释模型（VEM），渲染并校验准确的 SVG 原理图 | Python / SVG |
 | [ResearchScout-Skill](https://github.com/tavorit-dev/ResearchScout-Skill) | 研究侦察员：可断点续跑、可追溯的迭代式行业研究采集与知识沉淀 | Python |
-| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | 博客文章的「可运行版本」—— 后端、前端、DevOps 各领域的自包含示例 | Go / Node.js |
+
+### 🎮 视觉引擎 & 游戏 —— [Open-Multiverse](https://github.com/Open-Multiverse)
+
+| 项目 | 简介 | 技术 |
+| --- | --- | --- |
 | [NovaEngine](https://github.com/Open-Multiverse/NovaEngine) | 用 Rust + WebAssembly 构建的 Web 3D 游戏引擎 —— WebGPU 渲染、Rapier3D 物理、egui 界面 | Rust / WebAssembly |
+
+### 🧩 个人项目
+
+| 项目 | 简介 | 技术 |
+| --- | --- | --- |
+| [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | 博客文章的「可运行版本」—— 后端、前端、DevOps 各领域的自包含示例 | Go / Node.js |
 | [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | 个人技术博客源码，通过 GitHub Pages 发布的静态站点 | HTML / CSS / JS |
 
 ## 📫 找到我
