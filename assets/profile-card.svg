@@ -18,7 +18,7 @@
   <text class="title" x="24" y="46">HashTable (CrazyF-wind)</text>
   <text class="subtitle" x="24" y="66">CrazyF-wind · tavorit-dev · Open-Multiverse</text>
   <g class="icon" transform="translate(24 100)"><circle cx="8" cy="8" r="3.5" /><path d="M0 8h4.5M11.5 8H16" /></g>
-  <text class="row" x="50" y="112">2 commits in 2026 · 2 total</text>
+  <text class="row" x="50" y="112">189 commits in 2026</text>
   <g class="icon" transform="translate(24 140)"><rect x="1.5" y="2" width="13" height="12" rx="2" /><path d="M5 2v12" /></g>
   <text class="row" x="50" y="152">9 public repos</text>
   <g class="icon" transform="translate(24 180)"><circle cx="8" cy="8" r="6.5" /><path d="M8 4.5V8l2.5 1.5" /></g>
@@ -27,21 +27,13 @@
   <line class="grid" x1="300" y1="220.0" x2="676" y2="220.0" />
   <line class="grid" x1="300" y1="162.0" x2="676" y2="162.0" />
   <line class="grid" x1="300" y1="104.0" x2="676" y2="104.0" />
-  <rect class="bar" x="655.2" y="104.0" width="14.8" height="116.0" rx="2" />
-  <text class="axis" x="292" y="108" text-anchor="end">2</text>
+  <rect class="bar" x="542.5" y="218.8" width="41.4" height="1.2" rx="2" />
+  <rect class="bar" x="617.7" y="104.0" width="41.4" height="116.0" rx="2" />
+  <text class="axis" x="292" y="108" text-anchor="end">189</text>
   <text class="axis" x="292" y="224" text-anchor="end">0</text>
-  <text class="axis" x="313.4" y="238" text-anchor="middle">2013</text>
-  <text class="axis" x="340.3" y="238" text-anchor="middle">2014</text>
-  <text class="axis" x="367.1" y="238" text-anchor="middle">2015</text>
-  <text class="axis" x="394.0" y="238" text-anchor="middle">2016</text>
-  <text class="axis" x="420.9" y="238" text-anchor="middle">2017</text>
-  <text class="axis" x="447.7" y="238" text-anchor="middle">2018</text>
-  <text class="axis" x="474.6" y="238" text-anchor="middle">2019</text>
-  <text class="axis" x="501.4" y="238" text-anchor="middle">2020</text>
-  <text class="axis" x="528.3" y="238" text-anchor="middle">2021</text>
-  <text class="axis" x="555.1" y="238" text-anchor="middle">2022</text>
-  <text class="axis" x="582.0" y="238" text-anchor="middle">2023</text>
-  <text class="axis" x="608.9" y="238" text-anchor="middle">2024</text>
-  <text class="axis" x="635.7" y="238" text-anchor="middle">2025</text>
-  <text class="axis" x="662.6" y="238" text-anchor="middle">2026</text>
+  <text class="axis" x="337.6" y="238" text-anchor="middle">2022</text>
+  <text class="axis" x="412.8" y="238" text-anchor="middle">2023</text>
+  <text class="axis" x="488.0" y="238" text-anchor="middle">2024</text>
+  <text class="axis" x="563.2" y="238" text-anchor="middle">2025</text>
+  <text class="axis" x="638.4" y="238" text-anchor="middle">2026</text>
 </svg>
