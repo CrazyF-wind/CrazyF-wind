@@ -9,7 +9,22 @@ import { collectRepos, getJson, resolveOwners } from './lib/github.mjs';
 
 const OUTPUT = resolve('assets/profile-card.svg');
 const PRIMARY = process.env.PRIMARY_OWNER || 'CrazyF-wind';
+const YEARS = 5;
+// Commit emails belonging to the profile owner. The account's commits are not
+// linked to the GitHub account, so `commit.author` is null for most of them.
+const AUTHOR_EMAILS = new Set(
+  (process.env.AUTHOR_EMAILS || 'fengf@dosec.cn,ff1990@126.com')
+    .split(',')
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean),
+);
 const integer = new Intl.NumberFormat('en-US');
+
+function isOwnCommit(commit) {
+  if (commit.author?.login?.toLowerCase() === PRIMARY.toLowerCase()) return true;
+  const email = commit.commit?.author?.email?.toLowerCase();
+  return email ? AUTHOR_EMAILS.has(email) : false;
+}
 
 function escapeXml(value) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -55,7 +70,7 @@ function renderSvg({ title, subtitle, rows, years, max }) {
   const yTop = 104;
   const yBottom = 220;
   const slot = years.length > 0 ? (x1 - x0) / years.length : 0;
-  const barWidth = Math.min(18, slot * 0.55);
+  const barWidth = Math.min(48, slot * 0.55);
   const labelStep = years.length > 15 ? 2 : 1;
 
   const bars = years
@@ -128,7 +143,8 @@ async function main() {
   const createdYear = user?.created_at
     ? new Date(user.created_at).getUTCFullYear()
     : currentYear;
-  const startYear = Math.min(createdYear, currentYear);
+  // Show the last `YEARS` calendar years, never before the account was created.
+  const startYear = Math.max(Math.min(createdYear, currentYear), currentYear - YEARS + 1);
   const since = new Date(Date.UTC(startYear, 0, 1)).toISOString();
 
   const years = [];
@@ -139,8 +155,7 @@ async function main() {
 
   for (const repo of repos) {
     for (const commit of await commitsSince(repo, since)) {
-      // Count only commits attributed to the profile owner's GitHub account.
-      if (commit.author?.login?.toLowerCase() !== PRIMARY.toLowerCase()) continue;
+      if (!isOwnCommit(commit)) continue;
       const date = new Date(commit.commit?.author?.date ?? commit.commit?.committer?.date);
       if (Number.isNaN(date.getTime())) continue;
       const bucket = byYear.get(String(date.getUTCFullYear()));
@@ -160,9 +175,7 @@ async function main() {
   const rows = [
     {
       icon: 'commit',
-      text: `${integer.format(currentYearCommits)} commits in ${currentYear} · ${integer.format(
-        yearTotal,
-      )} total`,
+      text: `${integer.format(currentYearCommits)} commits in ${currentYear}`,
     },
     { icon: 'repo', text: `${repos.length} public repos` },
     {
