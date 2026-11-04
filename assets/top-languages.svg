@@ -14,16 +14,16 @@
   <text class="subtitle" x="20" y="48">CrazyF-wind · tavorit-dev · Open-Multiverse · open-wuxu · 12 repos</text>
   <text class="label" x="20" y="86">Python</text>
   <rect class="track" x="150" y="78" width="260" height="8" rx="4" />
-  <rect x="150" y="78" width="108" height="8" rx="4" fill="#3572A5" />
-  <text class="pct" x="475" y="86" text-anchor="end">41%</text>
+  <rect x="150" y="78" width="114" height="8" rx="4" fill="#3572A5" />
+  <text class="pct" x="475" y="86" text-anchor="end">44%</text>
   <text class="label" x="20" y="112">HTML</text>
   <rect class="track" x="150" y="104" width="260" height="8" rx="4" />
-  <rect x="150" y="104" width="101" height="8" rx="4" fill="#e34c26" />
-  <text class="pct" x="475" y="112" text-anchor="end">39%</text>
+  <rect x="150" y="104" width="96" height="8" rx="4" fill="#e34c26" />
+  <text class="pct" x="475" y="112" text-anchor="end">37%</text>
   <text class="label" x="20" y="138">Rust</text>
   <rect class="track" x="150" y="130" width="260" height="8" rx="4" />
-  <rect x="150" y="130" width="33" height="8" rx="4" fill="#dea584" />
-  <text class="pct" x="475" y="138" text-anchor="end">13%</text>
+  <rect x="150" y="130" width="32" height="8" rx="4" fill="#dea584" />
+  <text class="pct" x="475" y="138" text-anchor="end">12%</text>
   <text class="label" x="20" y="164">JavaScript</text>
   <rect class="track" x="150" y="156" width="260" height="8" rx="4" />
   <rect x="150" y="156" width="8" height="8" rx="4" fill="#f1e05a" />
@@ -31,7 +31,7 @@
   <text class="label" x="20" y="190">CSS</text>
   <rect class="track" x="150" y="182" width="260" height="8" rx="4" />
   <rect x="150" y="182" width="7" height="8" rx="4" fill="#563d7c" />
-  <text class="pct" x="475" y="190" text-anchor="end">2.8%</text>
+  <text class="pct" x="475" y="190" text-anchor="end">2.7%</text>
   <text class="label" x="20" y="216">Go</text>
   <rect class="track" x="150" y="208" width="260" height="8" rx="4" />
   <rect x="150" y="208" width="2" height="8" rx="4" fill="#00ADD8" />
