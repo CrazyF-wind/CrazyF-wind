@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://hashtable.talvori.top/"><img src="https://img.shields.io/badge/Website-hashtable.talvori.top-2F81F7?style=flat-square&logo=safari&logoColor=white" alt="Website" /></a>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-crazyf--wind.github.io-2F81F7?style=flat-square&logo=githubpages&logoColor=white" alt="Blog" /></a>
   <img src="https://img.shields.io/badge/Location-BeiJing%2C%20China-555?style=flat-square&logo=googlemaps&logoColor=white" alt="Location" />
   <img src="https://komarev.com/ghpvc/?username=CrazyF-wind&style=flat-square&color=2F81F7" alt="Profile views" />
@@ -21,6 +22,7 @@
 - 🌱 Currently exploring **AI Agents**
 - 💻 I believe that **technology and innovation can change the world.**
 - 📝 I write now and then — everything lives on my [blog](https://crazyf-wind.github.io/)
+- 🌐 Projects, research and notes are collected on my [personal site](https://hashtable.talvori.top/)
 - ⚡ In my spare time I read source code, build tools, and make simple things complicated only to boil them back down to simple
 
 ## 🛠 Tech Stack
@@ -83,12 +85,14 @@
 
 | Project | Description | Tech |
 | --- | --- | --- |
+| [hashtable.talvori.top](https://hashtable.talvori.top/) | My personal tech space — six projects, research notes and an interactive hash table lab, shipped as a static site | React / TypeScript / Vite |
 | [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | Runnable companion code for my blog — six self-contained examples across backend, frontend and DevOps, each linked to its article | Go / Node.js |
 | [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | Source of my personal tech blog — a static site published with GitHub Pages | HTML / CSS / JS |
 
 ## 📫 Find Me
 
 <p>
+  <a href="https://hashtable.talvori.top/"><img src="https://img.shields.io/badge/Website-2F81F7?style=for-the-badge&logo=safari&logoColor=white" /></a>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
   <a href="https://github.com/CrazyF-wind"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
   <a href="https://github.com/tavorit-dev"><img src="https://img.shields.io/badge/tavorit--dev-181717?style=for-the-badge&logo=github&logoColor=white" /></a>

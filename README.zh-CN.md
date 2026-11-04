@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://hashtable.talvori.top/"><img src="https://img.shields.io/badge/Website-hashtable.talvori.top-2F81F7?style=flat-square&logo=safari&logoColor=white" alt="Website" /></a>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-crazyf--wind.github.io-2F81F7?style=flat-square&logo=githubpages&logoColor=white" alt="Blog" /></a>
   <img src="https://img.shields.io/badge/Location-BeiJing%2C%20China-555?style=flat-square&logo=googlemaps&logoColor=white" alt="Location" />
   <img src="https://komarev.com/ghpvc/?username=CrazyF-wind&style=flat-square&color=2F81F7" alt="Profile views" />
@@ -21,6 +22,7 @@
 - 🌱 正在折腾 **AI Agent**
 - 💻 相信「**技术、创新可以改变世界.**」
 - 📝 偶尔写点东西，都在我的 [博客](https://crazyf-wind.github.io/) 里
+- 🌐 项目、研究与笔记也整理在[个人网站](https://hashtable.talvori.top/)
 - ⚡ 空闲时间喜欢读源码、造轮子、把简单的事情做复杂再简化回来
 
 ## 🛠 技术栈
@@ -83,12 +85,14 @@
 
 | 项目 | 简介 | 技术 |
 | --- | --- | --- |
+| [hashtable.talvori.top](https://hashtable.talvori.top/) | 个人技术主页 —— 六个项目、研究笔记与可交互的哈希表 Lab，纯静态部署 | React / TypeScript / Vite |
 | [HashTableLabs](https://github.com/CrazyF-wind/HashTableLabs) | 博客文章的「可运行版本」—— 后端、前端、DevOps 六个自包含示例，每个都对应一篇文章 | Go / Node.js |
 | [crazyf-wind.github.io](https://github.com/CrazyF-wind/crazyf-wind.github.io) | 个人技术博客源码，通过 GitHub Pages 发布的静态站点 | HTML / CSS / JS |
 
 ## 📫 找到我
 
 <p>
+  <a href="https://hashtable.talvori.top/"><img src="https://img.shields.io/badge/Website-2F81F7?style=for-the-badge&logo=safari&logoColor=white" /></a>
   <a href="https://crazyf-wind.github.io/"><img src="https://img.shields.io/badge/Blog-2F81F7?style=for-the-badge&logo=rss&logoColor=white" /></a>
   <a href="https://github.com/CrazyF-wind"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
   <a href="https://github.com/tavorit-dev"><img src="https://img.shields.io/badge/tavorit--dev-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
