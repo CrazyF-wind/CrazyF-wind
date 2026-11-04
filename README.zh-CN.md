@@ -48,7 +48,7 @@
 </p>
 
 <p align="center">
-  <img width="495" src="assets/contributions.svg" alt="CrazyF-wind、tavorit-dev、Open-Multiverse 与 open-wuxu 的贡献统计" />
+  <img width="495" src="assets/contributions.svg" alt="按组织拆分的贡献统计：CrazyF-wind、tavorit-dev、Open-Multiverse 与 open-wuxu 各自的提交、PR 与 Issue" />
   <img width="495" src="assets/top-languages.svg" alt="Top Languages" />
 </p>
 

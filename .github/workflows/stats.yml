@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Run tests
+        run: node --test
+
       - name: Generate top languages card
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

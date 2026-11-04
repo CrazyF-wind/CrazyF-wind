@@ -48,7 +48,7 @@
 </p>
 
 <p align="center">
-  <img width="495" src="assets/contributions.svg" alt="Contributions across CrazyF-wind, tavorit-dev, Open-Multiverse and open-wuxu" />
+  <img width="495" src="assets/contributions.svg" alt="Contributions by organization: commits, pull requests and issues for CrazyF-wind, tavorit-dev, Open-Multiverse and open-wuxu" />
   <img width="495" src="assets/top-languages.svg" alt="Top Languages" />
 </p>
 

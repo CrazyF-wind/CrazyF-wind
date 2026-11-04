@@ -86,7 +86,7 @@ export async function getAll(path) {
   return items;
 }
 
-async function listRepos(owner) {
+export async function listRepos(owner) {
   const repos = [];
   for (let page = 1; ; page += 1) {
     const orgBatch = await getJson(`/orgs/${owner}/repos?type=public&per_page=100&page=${page}`);
