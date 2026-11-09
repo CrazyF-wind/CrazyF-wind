@@ -21,7 +21,7 @@
   <text class="header" x="475" y="76" text-anchor="end">Issues</text>
   <line class="divider" x1="20" y1="88" x2="475" y2="88" />
   <text class="owner" x="20" y="108">CrazyF-wind</text>
-  <text class="value" x="330" y="108" text-anchor="end">34</text>
+  <text class="value" x="330" y="108" text-anchor="end">36</text>
   <text class="value" x="410" y="108" text-anchor="end">0</text>
   <text class="value" x="475" y="108" text-anchor="end">0</text>
   <text class="owner" x="20" y="138">tavorit-dev</text>
@@ -33,12 +33,12 @@
   <text class="value" x="410" y="168" text-anchor="end">0</text>
   <text class="value" x="475" y="168" text-anchor="end">0</text>
   <text class="owner" x="20" y="198">open-wuxu</text>
-  <text class="value" x="330" y="198" text-anchor="end">5</text>
+  <text class="value" x="330" y="198" text-anchor="end">11</text>
   <text class="value" x="410" y="198" text-anchor="end">0</text>
   <text class="value" x="475" y="198" text-anchor="end">0</text>
   <line class="divider" x1="20" y1="216" x2="475" y2="216" />
   <text class="total-label" x="20" y="236">Total</text>
-  <text class="total-value" x="330" y="236" text-anchor="end">238</text>
+  <text class="total-value" x="330" y="236" text-anchor="end">246</text>
   <text class="total-value" x="410" y="236" text-anchor="end">6</text>
   <text class="total-value" x="475" y="236" text-anchor="end">0</text>
 </svg>
