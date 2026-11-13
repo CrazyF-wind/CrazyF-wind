@@ -80,6 +80,7 @@
 | Project | Description | Tech |
 | --- | --- | --- |
 | [AssetStudio](https://github.com/open-wuxu/AssetStudio) | WUXU (物序) — an open-source industrial asset visualization and monitoring platform: asset registry, device topology, live sensor data and dashboards | Go / React / TypeScript |
+| [unreal-factory](https://github.com/open-wuxu/unreal-factory) | The Bund (外滩) — a fully procedural, interactive Three.js recreation of Shanghai's Bund: all geometry, textures and environment maps are generated in code or on Canvas, with day/dusk/night lighting and animated river traffic | JavaScript / Three.js |
 
 ### 🧩 Personal
 

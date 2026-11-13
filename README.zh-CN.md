@@ -80,6 +80,7 @@
 | 项目 | 简介 | 技术 |
 | --- | --- | --- |
 | [AssetStudio](https://github.com/open-wuxu/AssetStudio) | 物序 WUXU 旗下的开源工业资产可视化与监控平台 —— 资产台账、设备拓扑、实时数据与可视化看板 | Go / React / TypeScript |
+| [unreal-factory](https://github.com/open-wuxu/unreal-factory) | 外滩（The Bund）—— 全程序化生成的上海外滩三维场景：几何、贴图与环境贴图均由代码或 Canvas 生成，含昼夜切换与黄浦江航运动画 | JavaScript / Three.js |
 
 ### 🧩 个人项目
 
