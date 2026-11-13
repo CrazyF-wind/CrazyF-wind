@@ -87,7 +87,7 @@ export function renderSvg({ rows, repoCount }) {
     }
   </style>
   <text class="title" x="20" y="30">Contributions by organization</text>
-  <text class="subtitle" x="20" y="48">${escapeXml(`${rows.length} owners · ${repoCount} public repos`)}</text>
+  <text class="subtitle" x="20" y="48">${escapeXml(`${rows.length} owners · ${repoCount} public repos · all time`)}</text>
 ${headerCells}
   <line class="divider" x1="20" y1="88" x2="${width - 20}" y2="88" />
 ${body}

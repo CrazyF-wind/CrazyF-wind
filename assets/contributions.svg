@@ -15,7 +15,7 @@
     }
   </style>
   <text class="title" x="20" y="30">Contributions by organization</text>
-  <text class="subtitle" x="20" y="48">4 owners · 12 public repos</text>
+  <text class="subtitle" x="20" y="48">4 owners · 12 public repos · all time</text>
   <text class="header" x="330" y="76" text-anchor="end">Commits</text>
   <text class="header" x="410" y="76" text-anchor="end">PRs</text>
   <text class="header" x="475" y="76" text-anchor="end">Issues</text>

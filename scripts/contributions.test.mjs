@@ -52,3 +52,8 @@ test('mentions the public repository count in the subtitle', () => {
   const svg = renderSvg({ rows, repoCount: 12 });
   assert.match(svg, />[^<]*12 public repos[^<]*</);
 });
+
+test('labels the totals as all-time so they are not read as the current year', () => {
+  const svg = renderSvg({ rows, repoCount: 12 });
+  assert.match(svg, />[^<]*all time[^<]*</);
+});
